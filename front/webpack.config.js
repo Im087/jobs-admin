@@ -20,6 +20,7 @@ module.exports = {
     // loaders
     module: {
         rules: [
+            // load art-template files
             {
                 test: /\.art$/,
                 exclude: /(node_modules)/,
@@ -27,16 +28,17 @@ module.exports = {
                     loader: 'art-template-loader'
                 }
             },
-            // {
-            //     test: /\.css$/,
-            //     exclude: /(node_modules)/,
-            //     loaders: ["style-loader", "css-loader"],
-            // }
+            // load css files
+            {
+                test: /\.css$/,
+                exclude: /(node_modules)/,
+                loaders: ['style-loader', 'css-loader'],
+            }
         ]
     },
     // plugins
     plugins: [
-        // compile html files including js files
+        // copy html files including js files
         new HtmlWebpackPlugin({
             template: path.join(__dirname, './public/index.html'),
         }),
